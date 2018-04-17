@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_emulator"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Emulador" />
+
+        <item
+            android:id="@+id/nav_toolbox"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Tool Box" />
+
+    </group>
+
+    <item android:title="Reportes">
+        <menu>
+            <item
+                android:id="@+id/nav_results"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="Envios y pendientes" />
+        </menu>
+    </item>
+
+</menu>
