@@ -14,19 +14,69 @@
         app:alignItems="flex_start"
         app:alignContent="flex_start" >
 
-        <LinearLayout
-            android:layout_width="800dp"
-            android:layout_height="match_parent"
-            android:text="1"
-            app:layout_flexGrow="1">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="Diagnostico del medidor"
-                android:gravity="center"
-                app:layout_flexGrow="1" />
 
-        </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                app:layout_flexBasisPercent="50%"
+                android:text="KH ="
+                />
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                app:layout_flexBasisPercent="50%"
+                android:text="0%"
+                />
+
+
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="iniciar"
+            app:layout_flexGrow="1"
+            app:layout_flexBasisPercent="20%" />
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="detener"
+            app:layout_flexGrow="1"
+            app:layout_flexBasisPercent="20%" />
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Reiniciar"
+            app:layout_flexGrow="1"
+            app:layout_flexBasisPercent="20%" />
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="00:00:00"
+            android:background="#c3c1c1"
+            app:layout_flexGrow="1"
+            app:layout_flexBasisPercent="55%" />
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Diagnostico del medidor"
+            android:gravity="center"
+            app:layout_flexGrow="1" />
+
 
 
         <TextView
@@ -260,6 +310,34 @@
                 app:layout_flexGrow="1" />
 
         </LinearLayout>
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:layout_flexBasisPercent="55%"
+            android:text="RTC"
+            app:layout_flexGrow="1" />
+        <EditText
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="1"
+            app:layout_flexBasisPercent="20%"
+            app:layout_flexGrow="1" />
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:layout_flexBasisPercent="2%"
+            android:text=":"
+            app:layout_flexGrow="1" />
+        <EditText
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="1"
+            app:layout_flexBasisPercent="20%"
+            app:layout_flexGrow="1" />
 
 
         <TextView
@@ -319,6 +397,20 @@
             app:layout_flexGrow="1" />
 
 
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="30%"
+            android:text="Suma"
+            app:layout_flexGrow="1" />
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="65%"
+            android:text="resultado primarios"
+            app:layout_flexGrow="1" />
 
 
         <TextView
@@ -353,6 +445,20 @@
             app:layout_flexGrow="1" />
 
 
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="30%"
+            android:text="Suma"
+            app:layout_flexGrow="1" />
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="65%"
+            android:text="resultado secundarios"
+            app:layout_flexGrow="1" />
 
 
 
@@ -379,6 +485,38 @@
 
         <TextView
             style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:layout_flexBasisPercent="55%"
+            android:text="RTP"
+            app:layout_flexGrow="1" />
+        <EditText
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="1"
+            app:layout_flexBasisPercent="20%"
+            app:layout_flexGrow="1" />
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:layout_flexBasisPercent="2%"
+            android:text=":"
+            app:layout_flexGrow="1" />
+        <EditText
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="1"
+            app:layout_flexBasisPercent="20%"
+            app:layout_flexGrow="1" />
+
+
+
+
+        <TextView
+            style="@style/FlexItem"
             android:layout_width="180dp"
             android:layout_height="30dp"
             android:text="A"
@@ -433,8 +571,20 @@
             app:layout_flexBasisPercent="30%"
             app:layout_flexGrow="1" />
 
-
-
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="30%"
+            android:text="Promedio"
+            app:layout_flexGrow="1" />
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="65%"
+            android:text="resultado primarios"
+            app:layout_flexGrow="1" />
 
         <TextView
             style="@style/FlexItem"
@@ -467,10 +617,104 @@
             app:layout_flexBasisPercent="30%"
             app:layout_flexGrow="1" />
 
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="30%"
+            android:text="Promedio"
+            app:layout_flexGrow="1" />
+        <TextView
+            style="@style/FlexItem"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="65%"
+            android:text="resultado secundarios"
+            app:layout_flexGrow="1" />
 
 
 
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                app:layout_flexBasisPercent="15%"
+                android:text="KWH"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                app:layout_flexBasisPercent="35%"
+                android:text="0"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="KVARH"
+                app:layout_flexBasisPercent="15%" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                app:layout_flexBasisPercent="35%"
+                android:text="0"
+                />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            app:layout_flexBasisPercent="15%"
+            android:text="KVA CRON"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            app:layout_flexBasisPercent="35%"
+            android:text="0"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="KVA REALES"
+            app:layout_flexBasisPercent="15%" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            app:layout_flexBasisPercent="35%"
+            android:text="0"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            app:layout_flexBasisPercent="70%"
+            android:text="Eficiencia"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            app:layout_flexBasisPercent="30%"
+            android:text="0%"
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_flexBasisPercent="100%"
+            android:text="Calcular"
+            />
 
     </com.google.android.flexbox.FlexboxLayout>
 </ScrollView >

@@ -50,7 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             if (v.getId() == btnUno.getId()) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"zindyfrias@gmail.com"});
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"elberthcabrales@gmail.com"});
                 i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
                 i.putExtra(Intent.EXTRA_TEXT   , "body of email "+ mDataset[getPosition()]);
                 try {
