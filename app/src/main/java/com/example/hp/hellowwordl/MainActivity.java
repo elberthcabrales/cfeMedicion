@@ -1,6 +1,7 @@
 package com.example.hp.hellowwordl;
 
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 //recycler view libs
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,8 +26,11 @@ import android.support.v7.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                     ToolboxFragment.OnFragmentInteractionListener,
-                    EmulatorFragment.OnFragmentInteractionListener{
-//crecyclervview
+                    EmulatorFragment.OnFragmentInteractionListener,
+                    SettingFragment.OnFragmentInteractionListener,
+                    AboutFragment.OnFragmentInteractionListener,
+                    HelpFragment.OnFragmentInteractionListener{
+    //crecyclervview
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -55,11 +60,12 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
+
             }
-        });
-        */
+        });*/
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -104,10 +110,28 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        Fragment frgmnt = null;
+        if (id == R.id.action_setting) {
+            //Intent intent = new Intent(this, MainActivity.class);
+            //startActivity(intent);
+            frgmnt = new SettingFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main,frgmnt).commit();
+        }
+        else if (id == R.id.action_about) {
+            //Intent intent = new Intent(this, MainActivity.class);
+            //startActivity(intent);
+            frgmnt = new AboutFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main,frgmnt).commit();
+        }
+        else if (id == R.id.action_help) {
+            //Intent intent = new Intent(this, MainActivity.class);
+            //startActivity(intent);
+            frgmnt = new HelpFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main,frgmnt).commit();
+        }
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_help) {
+       /** if (id == R.id.action_help) {
 
             Toast toast1 =
                     Toast.makeText(getApplicationContext(),
@@ -115,7 +139,7 @@ public class MainActivity extends AppCompatActivity
 
             toast1.show();
         }
-
+*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -156,4 +180,6 @@ public class MainActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
 }
