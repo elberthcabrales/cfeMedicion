@@ -3,10 +3,13 @@ package com.example.hp.hellowwordl;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Chronometer;
 
 
 /**
@@ -17,7 +20,11 @@ import android.view.ViewGroup;
  * Use the {@link ToolboxFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ToolboxFragment extends Fragment {
+public class ToolboxFragment extends Fragment implements View.OnClickListener{
+
+    Chronometer chronoTKw=null;
+    Button btnstarTkw= null;
+    Button btnstopTkw=null;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,8 +70,18 @@ public class ToolboxFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view =  inflater.inflate(R.layout.fragment_toolbox, container, false);
+        chronoTKw = (Chronometer) view.findViewById(R.id.chronoTkw);
+        btnstarTkw = (Button) view.findViewById(R.id.btnStarteTkw);
+        btnstopTkw= (Button) view.findViewById(R.id.btnStopTkw);
+
+
+
+
+        btnstopTkw.setOnClickListener(this);
+        btnstarTkw.setOnClickListener(this);
+        return view;
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_toolbox, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -89,6 +106,23 @@ public class ToolboxFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnStarteTkw:
+                chronoTKw.setBase(SystemClock.elapsedRealtime());
+                chronoTKw.start();
+                btnstarTkw.setText("Reiniciar");
+                break;
+            case R.id.btnStopTkw:
+                //chrono.setBase(SystemClock.elapsedRealtime());
+                chronoTKw.stop();
+                btnstarTkw.setText("Iniciar");
+                break;
+
+        }
     }
 
     /**

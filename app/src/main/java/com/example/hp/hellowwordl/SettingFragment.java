@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hp.hellowwordl.manager.DatabaseManager;
+import com.example.hp.hellowwordl.manager.AddressManager;
 import com.example.hp.hellowwordl.model.Address;
 
 
@@ -25,7 +25,9 @@ import com.example.hp.hellowwordl.model.Address;
  * create an instance of this fragment.
  */
 public class SettingFragment extends Fragment implements View.OnClickListener{
-    private Long idAdress;
+    private Integer idAdress=null;
+    private EditText email = null;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,7 +64,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DatabaseManager.init(this.getContext());
+        AddressManager.init(this.getContext());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -75,8 +77,13 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
         Button b = (Button) view.findViewById(R.id.btnEmail);
+        EditText txtEmail = (EditText)view.findViewById(R.id.txtEmail);
+        Address address = AddressManager.getInstance().getAddress();
+        if(address!=null){
+            txtEmail.setText(address.getEmail());
+            idAdress=address.getId();
+        }
         b.setOnClickListener(this);
-
         return view;
     }
 
@@ -106,14 +113,23 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btnEmail){
+        if(v.getId() == R.id.btnEmail) {
             /*Toast toast1 =
                     Toast.makeText(v.getContext().getApplicationContext(),
                             "toas al seleccionar help", Toast.LENGTH_SHORT);
 
             toast1.show();*/
-            EditText email = (EditText) v.findViewById(R.id.txtEmail);
-            saveOrUpdateAddress("hola mundo!!");
+            email = (EditText) this.getActivity().findViewById(R.id.txtEmail);
+            if(isValidField(email,"Debes agregar un email valido")){
+
+                Address address= new Address();
+                address.setId(idAdress);
+                address.setEmail(email.getText().toString());
+                saveOrUpdateAddress(address);
+            }
+
+
+
         }
     }
 
@@ -133,19 +149,24 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         void onFragmentInteraction(Uri uri);
     }
 
-    private void saveOrUpdateAddress(final String email) {
-        final Address address = new Address();
-            address.setId(1);
-            address.setEmail(email);
+    private void saveOrUpdateAddress(final Address address) {
 
-        //if(idAdress == null){
-            DatabaseManager.getInstance().saveAddress(address);
-       // }else{
+        if(idAdress == null){
+            AddressManager.getInstance().saveAddress(address);
+        }else{
             // update
-        //    address.setId(idAdress);
-          //  DatabaseManager.getInstance().updateAddress(address);
-       // }
+            AddressManager.getInstance().updateAddress(address);
+        }
 
     }
+
+    private boolean isValidField(final EditText field, final String message){
+        if ( field.getText().toString().equals("") ) {
+            Toast.makeText(this.getContext(), message, Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
 
 }

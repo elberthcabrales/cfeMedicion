@@ -16,7 +16,6 @@
             app:alignContent="flex_start" >
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -31,6 +30,8 @@
                     app:layout_flexGrow="1" />
 
             </LinearLayout>
+
+
 
             <TextView
                 android:layout_width="40dp"
@@ -58,36 +59,30 @@
                 android:text="Revolucion de KWH"
                 />
             <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnStarteEKw"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="iniciar"
                 app:layout_flexGrow="1"
                 app:layout_flexBasisPercent="25%" />
             <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnStopEKw"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="detener"
                 app:layout_flexGrow="1"
                 app:layout_flexBasisPercent="25%" />
-            <android.support.v7.widget.AppCompatButton
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="Reiniciar"
-                app:layout_flexGrow="1"
-                app:layout_flexBasisPercent="25%" />
-            <TextView
+
+            <Chronometer
+                android:id="@+id/chronoEkwh"
                 android:layout_width="180dp"
                 android:layout_height="40dp"
+                android:background="#c3c1c1"
+                android:format="%s"
                 android:gravity="center"
                 android:textSize="20dp"
-                android:text="00:00:00"
-                android:background="#c3c1c1"
-                app:layout_flexGrow="1"
-                app:layout_flexBasisPercent="100%" />
-
-
-
-
+                app:layout_flexBasisPercent="100%"
+                app:layout_flexGrow="1" />
 
 
             <TextView
@@ -98,32 +93,31 @@
                 android:text="Revolucion de KVARH"
                 />
             <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnStarteEkvarh"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="iniciar"
                 app:layout_flexGrow="1"
                 app:layout_flexBasisPercent="20%" />
             <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnStopEKvarh"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="detener"
                 app:layout_flexGrow="1"
                 app:layout_flexBasisPercent="20%" />
-            <android.support.v7.widget.AppCompatButton
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="Reiniciar"
-                app:layout_flexGrow="1"
-                app:layout_flexBasisPercent="20%" />
-            <TextView
+
+
+            <Chronometer
+                android:id="@+id/chronoEkvarh"
                 android:layout_width="180dp"
                 android:layout_height="40dp"
+                android:background="#c3c1c1"
+                android:format="%s"
                 android:gravity="center"
                 android:textSize="20dp"
-                android:text="00:00:00"
-                android:background="#c3c1c1"
-                app:layout_flexGrow="1"
-                app:layout_flexBasisPercent="100%" />
+                app:layout_flexBasisPercent="100%"
+                app:layout_flexGrow="1" />
 
 
 

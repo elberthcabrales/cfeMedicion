@@ -63,7 +63,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             throw new RuntimeException(e);
         }
     }
-
+//Address functions helpers
     public Dao<Address, Integer> getAddressDao() {
         if (null == addressDao) {
             try {
@@ -75,14 +75,4 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         return addressDao;
     }
 
-    /*public Dao<Meter, Long> getMeterDao() {
-        if (null == meterDao) {
-            try {
-                meterDao = getDao(Meter.class);
-            }catch (java.sql.SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return meterDao;
-    }*/
 }

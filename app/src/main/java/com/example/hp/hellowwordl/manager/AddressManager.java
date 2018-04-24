@@ -10,20 +10,20 @@ import java.util.List;
 import com.example.hp.hellowwordl.helper.DatabaseHelper;
 import com.example.hp.hellowwordl.model.Address;
 
-public class DatabaseManager {
-    static private DatabaseManager instance;
-//aqui es el pedo
+public class AddressManager {
+    static private AddressManager instance;
+    //aqui es el pedo
     public static void init(Context ctx) {
         if (null==instance) {
-           instance = new DatabaseManager(ctx);
+            instance = new AddressManager(ctx);
         }
     }
-    static public DatabaseManager getInstance() {
+    static public AddressManager getInstance() {
         return instance;
     }
 
     private DatabaseHelper helper;
-    private DatabaseManager(Context ctx) {
+    private AddressManager(Context ctx) {
         helper = new DatabaseHelper(ctx);
     }
 
@@ -54,6 +54,15 @@ public class DatabaseManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public Address getAddress(){
+        Address address=null;
+        try{
+           address=getHelper().getAddressDao().queryBuilder().queryForFirst();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return address;
     }
 
 }

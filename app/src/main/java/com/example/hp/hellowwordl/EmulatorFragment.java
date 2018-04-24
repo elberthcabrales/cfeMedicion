@@ -3,10 +3,16 @@ package com.example.hp.hellowwordl;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.Toast;
 
 
 /**
@@ -17,7 +23,16 @@ import android.view.ViewGroup;
  * Use the {@link EmulatorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EmulatorFragment extends Fragment {
+public class EmulatorFragment extends Fragment implements View.OnClickListener{
+
+    Chronometer chronoKw=null;
+    Button btnstartEkw= null;
+    Button btnstopEkw=null;
+
+    Chronometer chronoKvarh=null;
+    Button btnstartkvarh= null;
+    Button btnstoptkvarh=null;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,8 +78,29 @@ public class EmulatorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_emulator, container, false);
+        View view =  inflater.inflate(R.layout.fragment_emulator, container, false);
+        chronoKw = (Chronometer) view.findViewById(R.id.chronoEkwh);
+        btnstartEkw = (Button) view.findViewById(R.id.btnStarteEKw);
+        btnstopEkw= (Button) view.findViewById(R.id.btnStopEKw);
+
+        chronoKvarh = (Chronometer) view.findViewById(R.id.chronoEkvarh);
+        btnstartkvarh = (Button) view.findViewById(R.id.btnStarteEkvarh);
+        btnstoptkvarh= (Button) view.findViewById(R.id.btnStopEKvarh);
+
+        btnstoptkvarh.setOnClickListener(this);
+        btnstartkvarh.setOnClickListener(this);
+
+        btnstopEkw.setOnClickListener(this);
+        btnstartEkw.setOnClickListener(this);
+
+        if(savedInstanceState!=null){
+            chronoKw.setBase(savedInstanceState.getLong("cronokwbase"));
+
+        }
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +127,31 @@ public class EmulatorFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.btnStarteEKw:
+                chronoKw.setBase(SystemClock.elapsedRealtime());
+                chronoKw.start();
+                btnstartEkw.setText("Reiniciar");
+                break;
+            case R.id.btnStopEKw:
+                //chrono.setBase(SystemClock.elapsedRealtime());
+                chronoKw.stop();
+                btnstartEkw.setText("Iniciar");
+                break;
+            case R.id.btnStarteEkvarh:
+                chronoKvarh.setBase(SystemClock.elapsedRealtime());
+                chronoKvarh.start();
+                btnstartkvarh.setText("Reiniciar");
+                break;
+            case R.id.btnStopEKvarh:
+                chronoKvarh.stop();
+                btnstartkvarh.setText("Iniciar");
+                break;
+        }
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -105,4 +166,12 @@ public class EmulatorFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putLong("cronokwbase", chronoKw.getBase());
+        super.onSaveInstanceState(outState);
+    }
+
+
 }
